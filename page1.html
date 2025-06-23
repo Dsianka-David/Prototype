@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 36px;
+        }
+        p {
+            color: #333;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .btn_oui {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .btn_non {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color:black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background-color: #ad1457;
+        }
+        .hidden {
+            display: none;
+        }
+        .auto-destroy {
+            background-color: black;
+            color: red;
+            font-size: 3rem;
+            animation: blink 0.8s infinite alternate;
+        }
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Joyeux Anniversaire Choupinette ! 🎉❤</h1>
+    <p>Aujourd’hui, le temps s’arrête un instant, comme s’il voulait savourer ce jour avec panache. <br>
+        Chaque instant qui passe, tu deviens une lumière un peu plus éclatante, une présence un peu plus captivante… et pourtant, il y a encore tant à découvrir.<br>
+        
+       Je pourrais te souhaiter mille choses, mais certaines ne se disent pas… elles se devinent, se ressentent, se laissent effleurer dans un regard ou un silence.<br>
+       Alors, je vais me contenter de te rappeler ceci : certaines présences sont des cadeaux en elles-mêmes… et la tienne en fait partie. <br>
+       Profite, brille, et surtout, ne te pose pas trop de questions cette fois… ✨ </p>
+    <button class="btn" onclick="showImage()">Vas-y, clique</button>
+
+    <div id="imageSection" class="hidden">
+        <img src="Item.jpg" alt="Illustration de demande" style="width: 300px; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <button class="btn" onclick="showVideo()">REPONDRE</button>
+    </div>
+
+    <div id="videoSection" class="hidden">
+        <video id="video" controls>
+            <source src="Video.demande .mp4" type="video/mp4">
+        </video>
+        <div>
+            <button class="btn_oui" onclick="showFinalPage(true)">Oui</button>
+            <button class="btn_non" onclick="showFinalPage(false)">Non</button>
+        </div>
+    </div>
+
+    <div id="finalPage" class="hidden">
+        <img src="WhatsApp Image 2025-03-20 à 21.22.07_213db10f.jpg" alt="Félicitations">
+        <h1>Très reconnaissant pour ta décision</h1>
+        <p>Fais une capture d'écran 📸 pour que je sache ta decision (j'ai pas fini le code😂)</p>
+    </div>
+
+    <div id="autoDestroy" class="hidden auto-destroy">
+        <h1>LA VIE C'EST HARD DE TOUTES LES FAÇONS</h1>
+    </div>
+
+    <script>
+        function showImage() {
+            document.querySelector("h1").style.display = "none";
+            document.querySelector("p").style.display = "none";
+            document.querySelector(".btn").style.display = "none";
+            document.getElementById("imageSection").classList.remove("hidden");
+        }
+        
+        function showVideo() {
+            document.getElementById("imageSection").classList.add("hidden");
+            document.getElementById("videoSection").classList.remove("hidden");
+        }
+
+        function showFinalPage(isYes) {
+            document.getElementById("videoSection").classList.add("hidden");
+            if (isYes) {
+                document.getElementById("finalPage").classList.remove("hidden");
+            } else {
+                document.getElementById("autoDestroy").classList.remove("hidden");
+                setTimeout(() => {
+                    document.body.innerHTML = "";
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
